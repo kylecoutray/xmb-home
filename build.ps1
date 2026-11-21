@@ -107,8 +107,9 @@ try {
     Run 'javac' @('--release', '11', '-nowarn', '-encoding', 'UTF-8',
         '-classpath', $ANDROID_JAR, '-d', 'classes', '@sources.txt')
     Remove-Item sources.txt
+    # D8 argument files treat quotes literally; relative class paths contain no spaces.
     Get-ChildItem -Recurse classes -Filter *.class | ForEach-Object {
-        '"' + ($_.FullName.Substring($rootPrefix.Length) -replace '\\', '/') + '"'
+        $_.FullName.Substring($rootPrefix.Length) -replace '\\', '/'
     } | Set-Content -Encoding ascii classes.txt
     Run "$BT\d8.bat" @('--lib', $ANDROID_JAR, '--min-api', "$MIN_SDK", '--release',
         '--output', "$PWD\dex", '@classes.txt')
