@@ -1,0 +1,36 @@
+# Build outputs
+classes/
+dex/
+gen/
+compiled.flata
+app-unsigned.apk
+app-with-dex.apk
+app-aligned.apk
+*.apk
+*.apk.idsig
+sources.txt
+classes.txt
+res/drawable-nodpi/
+assets/landscape_drawn_*
+
+# Local device state, signing, and credentials
+.local/
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+adbkey*
+KEY-INFO.txt
+.env
+.env.*
+!.env.example
+
+# Development
+__pycache__/
+*.py[cod]
+.venv/
+.idea/
+*.iml
+.DS_Store
+*.patch
